@@ -7,6 +7,6 @@
 if (!function_exists('h')) {
     function h()
     {
-        return \Dxw\Iguana\Registrar::getSingleton()->getInstance('Dxw\\Iguana\\Helpers');
+        return \Dxw\Iguana\Registrar::getSingleton()->getInstance(\Dxw\Iguana\Theme\Helpers::class);
     }
 }
