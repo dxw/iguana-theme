@@ -1,10 +1,18 @@
 # iguana-theme
 
-Helpful gubbins for making themes with Iguana.
+Helper functions and template layouts for [Iguana](https://github.com/dxw/iguana)-based themes.
 
-## What does this repo provide
+## `\Dxw\Iguana\Theme\Helpers`
 
-### `\Dxw\Iguana\Theme\Helpers`
+### Installation
+
+Add the following to `app/di.php`:
+
+```
+$registrar->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\Helpers());
+```
+
+### Usage
 
 Your classes can easily declare helper functions:
 
@@ -34,3 +42,42 @@ And to call this helper function from a template, simply:
 ```
 
 Using `h()` means that you only need to pollute the global namespace with one function. And `h()` is a lot shorter than typing out the full namespace.
+
+All you need to do is pass the `Helpers` instance to your class during instantiation. Example:
+
+```
+$registrar->addInstance(\Dxw\MyTheme\MyClass::class, new \Dxw\MyTheme\MyClass(
+    $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
+));
+```
+
+## `\Dxw\Iguana\Theme\Layout` and `\Dxw\Iguana\Theme\LayoutRegister`
+
+### Installation
+
+Add the following to `app/di.php`:
+
+```
+$registrar->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\Helpers());
+$registrar->addInstance(\Dxw\Iguana\Theme\LayoutRegister::class, new \Dxw\Iguana\Theme\LayoutRegister(
+    $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
+));
+```
+
+### Usage
+
+Add something like this to `layouts/main.php` (within your theme directory):
+
+```
+<!doctype html>
+<html>
+  <head>
+    ...
+  </head>
+  <body>
+    <?php h()->w_requested_template() ?>
+  </body>
+</html>
+```
+
+And remove the calls to `get_header()`/`get_footer()` from all your templates.
