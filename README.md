@@ -1,8 +1,10 @@
 # iguana-theme
 
-Helper functions and template layouts for [Iguana](https://github.com/dxw/iguana)-based themes.
+Helper functions and template layouts for [iguana](https://github.com/dxw/iguana)-based themes.
 
 ## `\Dxw\Iguana\Theme\Helpers`
+
+Helper functions.
 
 ### Installation
 
@@ -14,7 +16,7 @@ $registrar->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\
 
 ### Usage
 
-Your classes can easily declare helper functions:
+Your classes can declare helper functions:
 
 ```
 <?php
@@ -35,7 +37,7 @@ class MyClass
 }
 ```
 
-And to call this helper function from a template, simply:
+To call this function from a template:
 
 ```
 <?php h()->myFunc(4) ?>
@@ -52,6 +54,8 @@ $registrar->addInstance(\Dxw\MyTheme\MyClass::class, new \Dxw\MyTheme\MyClass(
 ```
 
 ## `\Dxw\Iguana\Theme\Layout` and `\Dxw\Iguana\Theme\LayoutRegister`
+
+Layout templates.
 
 ### Installation
 
