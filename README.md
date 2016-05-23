@@ -81,3 +81,7 @@ Add something like this to `layouts/main.php` (within your theme directory):
 ```
 
 And remove the calls to `get_header()`/`get_footer()` from all your templates.
+
+## Licence
+
+[MIT](COPYING.md)
