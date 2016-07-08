@@ -18,7 +18,7 @@ class LayoutRegister_Test extends PHPUnit_Framework_TestCase
 
     public function testRegister()
     {
-        $layoutRegister = new \Dxw\Iguana\Theme\LayoutRegister($this->getHelpers());
+        $layoutRegister = new \Dxw\Iguana\Theme\LayoutRegister();
 
         $this->assertInstanceOf(\Dxw\Iguana\Registerable::class, $layoutRegister);
 
@@ -29,18 +29,18 @@ class LayoutRegister_Test extends PHPUnit_Framework_TestCase
 
     public function testConstruct()
     {
-        $helpers = $this->getHelpers(\Dxw\Iguana\Theme\LayoutRegister::class, [
+        $this->initHelpers(\Dxw\Iguana\Theme\LayoutRegister::class, [
             'w_requested_template' => 'wRequestedTemplate',
         ]);
 
-        $layoutRegister = new \Dxw\Iguana\Theme\LayoutRegister($helpers);
+        $layoutRegister = new \Dxw\Iguana\Theme\LayoutRegister();
 
         $this->assertFunctionsRegistered();
     }
 
     public function testWRequestedTemplate()
     {
-        $layoutRegister = new \Dxw\Iguana\Theme\LayoutRegister($this->getHelpers());
+        $layoutRegister = new \Dxw\Iguana\Theme\LayoutRegister();
 
         $file = \org\bovigo\vfs\vfsStream::setup()->url().'/file.php';
         file_put_contents($file, '<?php global $called; $called++;');
