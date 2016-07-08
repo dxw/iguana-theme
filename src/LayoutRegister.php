@@ -4,9 +4,9 @@ namespace Dxw\Iguana\Theme;
 
 class LayoutRegister implements \Dxw\Iguana\Registerable
 {
-    public function __construct(\Dxw\Iguana\Theme\Helpers $helpers)
+    public function __construct()
     {
-        $helpers->registerFunction('w_requested_template', [$this, 'wRequestedTemplate']);
+        \h()->registerFunction('w_requested_template', [$this, 'wRequestedTemplate']);
     }
 
     public function register()

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ef3d3bd03859fd2ef0ff5e16afe9763e",
-    "content-hash": "b1a9edf895d3f6759974bfafc3578f09",
+    "hash": "44ef851612d81a1e8665b73fa93145cd",
+    "content-hash": "7b7a5666e791188693d5712c3becc9de",
     "packages": [
         {
             "name": "aura/autoload",
@@ -61,22 +61,23 @@
         },
         {
             "name": "dxw/iguana",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dxw/iguana.git",
-                "reference": "7e9f3d40cd7bab57f5b6024047eaf8271f9f8d13"
+                "reference": "bbbcc299a316400724c09a7bfec24cae3305d32d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dxw/iguana/zipball/7e9f3d40cd7bab57f5b6024047eaf8271f9f8d13",
-                "reference": "7e9f3d40cd7bab57f5b6024047eaf8271f9f8d13",
+                "url": "https://api.github.com/repos/dxw/iguana/zipball/bbbcc299a316400724c09a7bfec24cae3305d32d",
+                "reference": "bbbcc299a316400724c09a7bfec24cae3305d32d",
                 "shasum": ""
             },
             "require": {
                 "aura/autoload": "^2.0"
             },
             "require-dev": {
+                "10up/wp_mock": "^0.1.1",
                 "mikey179/vfsstream": "^1.6",
                 "phpunit/phpunit": "4.8.*"
             },
@@ -91,7 +92,7 @@
                 "MIT"
             ],
             "homepage": "https://github.com/dxw/iguana",
-            "time": "2016-05-18 18:59:51"
+            "time": "2016-07-08 19:48:23"
         }
     ],
     "packages-dev": [

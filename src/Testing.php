@@ -4,7 +4,7 @@ namespace Dxw\Iguana\Theme;
 
 trait Testing
 {
-    public function getHelpers(/* string */ $cls = '', array $expectedFunctions = [])
+    public function initHelpers(/* string */ $cls = '', array $expectedFunctions = [])
     {
         $this->expectedFunctions = $expectedFunctions;
 
@@ -27,7 +27,10 @@ trait Testing
             }));
         }
 
-        return $helpers;
+        \WP_Mock::wpFunction('h', [
+            'args' => [],
+            'return' => $helpers,
+        ]);
     }
 
     public function assertFunctionsRegistered()

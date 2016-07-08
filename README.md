@@ -11,12 +11,12 @@ Helper functions.
 Add the following to `app/di.php`:
 
 ```
-$registrar->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\Helpers());
+\Dxw\Iguana\Theme\Helpers::init();
 ```
 
 ### Usage
 
-Your classes can declare helper functions:
+Your classes can declare helper functions like so:
 
 ```
 <?php
@@ -25,9 +25,9 @@ namespace Dxw\MyTheme;
 
 class MyClass
 {
-    public function __construct(\Dxw\Iguana\Theme\Helpers $helpers)
+    public function __construct()
     {
-        $helpers->registerFunction('myFunc', [$this, 'myFunc']);
+        \h()->registerFunction('myFunc', [$this, 'myFunc']);
     }
 
     public function myFunc($a)
@@ -45,14 +45,6 @@ To call this function from a template:
 
 Using `h()` means that you only need to pollute the global namespace with one function. And `h()` is a lot shorter than typing out the full namespace.
 
-All you need to do is pass the `Helpers` instance to your class during instantiation. Example:
-
-```
-$registrar->addInstance(\Dxw\MyTheme\MyClass::class, new \Dxw\MyTheme\MyClass(
-    $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
-));
-```
-
 ## `\Dxw\Iguana\Theme\Layout` and `\Dxw\Iguana\Theme\LayoutRegister`
 
 Layout templates.
@@ -62,10 +54,7 @@ Layout templates.
 Add the following to `app/di.php`:
 
 ```
-$registrar->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\Helpers());
-$registrar->addInstance(\Dxw\Iguana\Theme\LayoutRegister::class, new \Dxw\Iguana\Theme\LayoutRegister(
-    $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
-));
+$registrar->addInstance(\Dxw\Iguana\Theme\LayoutRegister::class, new \Dxw\Iguana\Theme\LayoutRegister());
 ```
 
 ### Usage

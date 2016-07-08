@@ -2,9 +2,14 @@
 
 namespace Dxw\Iguana\Theme;
 
-class Helpers implements \Dxw\Iguana\Registerable
+class Helpers
 {
     protected $functions;
+    static $singleton;
+
+    protected function __construct()
+    {
+    }
 
     public function registerFunction($name, $callable)
     {
@@ -16,8 +21,17 @@ class Helpers implements \Dxw\Iguana\Registerable
         return call_user_func_array($this->functions[$name], $args);
     }
 
-    public function register()
+    public static function init()
     {
         require __DIR__.'/h.php';
+    }
+
+    public static function getSingleton()
+    {
+        if (!isset(self::$singleton)) {
+            self::$singleton = new self();
+        }
+
+        return self::$singleton;
     }
 }
