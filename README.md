@@ -23,11 +23,18 @@ Your classes can declare helper functions:
 
 namespace Dxw\MyTheme;
 
-class MyClass
+class MyClass implements \Dxw\Iguana\Registerable
 {
+    private $helpers;
+
     public function __construct(\Dxw\Iguana\Theme\Helpers $helpers)
     {
-        $helpers->registerFunction('myFunc', [$this, 'myFunc']);
+        $this->helpers = $helpers;        
+    }
+
+    public function register()
+    {
+        $this->helpers->registerFunction('myFunc', [$this, 'myFunc']);
     }
 
     public function myFunc($a)
