@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @runTestsInSeparateProcesses
+ */
 class Helpers_Test extends PHPUnit_Framework_TestCase
 {
     public function testRegisterFunction()
@@ -34,5 +37,35 @@ class Helpers_Test extends PHPUnit_Framework_TestCase
         $helpers->register();
 
         $this->assertTrue(function_exists('h'));
+    }
+
+    public function testCallingFunctionViah()
+    {
+        $helpers = new \Dxw\Iguana\Theme\Helpers();
+
+        \Dxw\Iguana\Registrar::getSingleton()->addInstance(\Dxw\Iguana\Theme\Helpers::class, $helpers);
+
+        $helpers->registerFunction('myFunc', function () {
+            return 42;
+        });
+
+        $helpers->register();
+
+        $this->assertEquals(42, h()->myFunc());
+    }
+
+    public function testCallingFunctionArgumentsViah()
+    {
+        $helpers = new \Dxw\Iguana\Theme\Helpers();
+
+        \Dxw\Iguana\Registrar::getSingleton()->addInstance(\Dxw\Iguana\Theme\Helpers::class, $helpers);
+
+        $helpers->registerFunction('anotherFunc', function ($a, $b) {
+            return 42 + $a + $b;
+        });
+
+        $helpers->register();
+
+        $this->assertEquals(48, h()->anotherFunc(1, 5));
     }
 }
