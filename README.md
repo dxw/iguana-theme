@@ -11,7 +11,7 @@ Helper functions.
 Add the following to `app/di.php`:
 
 ```
-$registrar->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\Helpers());
+$registrar->addInstance(new \Dxw\Iguana\Theme\Helpers());
 ```
 
 ### Usage
@@ -55,7 +55,7 @@ Using `h()` means that you only need to pollute the global namespace with one fu
 All you need to do is pass the `Helpers` instance to your class during instantiation. Example:
 
 ```
-$registrar->addInstance(\Dxw\MyTheme\MyClass::class, new \Dxw\MyTheme\MyClass(
+$registrar->addInstance(new \Dxw\MyTheme\MyClass(
     $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
 ));
 ```
@@ -69,8 +69,8 @@ Layout templates.
 Add the following to `app/di.php`:
 
 ```
-$registrar->addInstance(\Dxw\Iguana\Theme\Helpers::class, new \Dxw\Iguana\Theme\Helpers());
-$registrar->addInstance(\Dxw\Iguana\Theme\LayoutRegister::class, new \Dxw\Iguana\Theme\LayoutRegister(
+$registrar->addInstance(new \Dxw\Iguana\Theme\Helpers());
+$registrar->addInstance(new \Dxw\Iguana\Theme\LayoutRegister(
     $registrar->getInstance(\Dxw\Iguana\Theme\Helpers::class)
 ));
 ```
