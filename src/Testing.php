@@ -21,7 +21,7 @@ trait Testing
         if ($cls !== '') {
             $helpers->method('registerFunction')
             ->will($this->returnCallback(function ($a, $b) use ($cls) {
-                $this->assertInternalType('array', $b);
+                $this->assertIsArray($b);
                 $this->assertInstanceOf($cls, $b[0]);
                 $this->called[$a] = $b[1];
             }));
