@@ -5,7 +5,6 @@
     "license": "MIT",
     "require-dev": {
         "mikey179/vfsstream": "^1.6",
-        "friendsofphp/php-cs-fixer": "^2.16",
         "10up/wp_mock": "^0.4.2",
         "kahlan/kahlan": "^5.2",
         "dxw/php-cs-fixer-config": "^1.0"
