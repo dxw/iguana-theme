@@ -16,7 +16,7 @@ class Layout
     public function __construct($template = 'layouts/main.php')
     {
         $this->slug = basename($template, '.php');
-        $this->templates = array($template);
+        $this->templates = [$template];
 
         if (self::$base) {
             $str = substr($template, 0, -4);

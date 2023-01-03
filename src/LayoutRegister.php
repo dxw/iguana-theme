@@ -8,10 +8,9 @@ class LayoutRegister implements \Dxw\Iguana\Registerable
     {
         $helpers->registerFunction('w_requested_template', [$this, 'wRequestedTemplate']);
     }
-
     public function register()
     {
-        add_filter('template_include', array(\Dxw\Iguana\Theme\Layout::class, 'apply'), 99);
+        add_filter('template_include', [\Dxw\Iguana\Theme\Layout::class, 'apply'], 99);
     }
 
     public function wRequestedTemplate()
