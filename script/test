@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# script/test: Run lints for the katas and scaffolding.
+#
+# Note that this file does not run the kata tests, because we epect them to
+# fail in this base repository. Use `./script/run` to actually run the tests.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+if [ -n "$DEBUG" ]; then
+	set -x
+fi
+
+echo "===> Linting shell scripts..."
+./.shellcheck.sh
+
+echo "===> Linting PHP..."
+./vendor/bin/php-cs-fixer fix -v --diff
+
+echo "===> Check for 100% test coverage..."
+phpdbg -qrr ./vendor/bin/kahlan --coverage=4 --no-colors | grep "Total: 100.00%"
