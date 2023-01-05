@@ -15,7 +15,7 @@ describe('LayoutRegister', function () {
     });
 
     describe('->register', function () {
-        it('passes if successfully registers Layout->apply() as callback function to filter hook', function () {
+        it('registers new callback function to layout', function () {
             $layoutRegister = new \Dxw\Iguana\Theme\LayoutRegister($this->helpers);
 
             expect($layoutRegister)->toBeAnInstanceOf(\Dxw\Iguana\Registerable::class);
@@ -35,7 +35,7 @@ describe('LayoutRegister', function () {
     });
 
     describe('->wRequestedTemplate', function () {
-        it('', function () {
+        it('loads the requested template', function () {
             $layoutRegister = new \Dxw\Iguana\Theme\LayoutRegister($this->helpers);
 
             $file = \org\bovigo\vfs\vfsStream::setup()->url().'/file.php';

@@ -14,7 +14,7 @@ describe('Layout', function () {
     });
 
     describe('->apply()', function () {
-        it('checks if layout is applied correctly', function () {
+        it('applies layout correctly', function () {
             expect(\Dxw\Iguana\Theme\Layout::apply('x/y/z.php'))->toBeAnInstanceOf(\Dxw\Iguana\Theme\Layout::class);
             expect('x/y/z.php')->toEqual(
                 \dxw\iguana\theme\layout::$wordpress_template
