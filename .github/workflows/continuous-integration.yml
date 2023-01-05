@@ -28,4 +28,4 @@ jobs:
       - name: PHP CS fix
         run: vendor/bin/php-cs-fixer fix --dry-run -v --diff
       - name: PHP unit tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/kahlan
