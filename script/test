@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# script/test: Run lints and tests.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+if [ -n "$DEBUG" ]; then
+	set -x
+fi
+
+echo "===> Linting shell scripts..."
+./.shellcheck.sh
+
+echo "===> Linting PHP..."
+./vendor/bin/php-cs-fixer fix -v --diff
+
+TEST_FILE=$1
+
+if [ -n "$TEST_FILE" ]; then
+	TEST_NAME=$(basename "${TEST_FILE}" | cut -f 1 -d '.')
+	echo "==> Running ${TEST_NAME}..."
+	phpdbg -qrr ./vendor/bin/kahlan --spec="$TEST_FILE"
+else
+	echo "===> Run all tests..."
+	phpdbg -qrr ./vendor/bin/kahlan
+fi
+
+
+echo "===> Check for 100% test coverage..."
+phpdbg -qrr ./vendor/bin/kahlan --coverage=4 --no-colors | grep "Total: 100.00%"
