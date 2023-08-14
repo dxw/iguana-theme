@@ -4,34 +4,37 @@ namespace Dxw\Iguana\Theme;
 
 trait Testing
 {
-    public function getHelpers(/* string */ $cls = '', array $expectedFunctions = [])
-    {
-        $this->expectedFunctions = $expectedFunctions;
+	public $expectedFunctions;
+	public $called;
 
-        $helpers = $this->getMockBuilder(\Dxw\Iguana\Theme\Helpers::class)
-        ->disableOriginalConstructor()
-        ->getMock();
+	public function getHelpers(/* string */ $cls = '', array $expectedFunctions = [])
+	{
+		$this->expectedFunctions = $expectedFunctions;
 
-        $this->called = [];
+		$helpers = $this->getMockBuilder(\Dxw\Iguana\Theme\Helpers::class)
+		->disableOriginalConstructor()
+		->getMock();
 
-        if (($cls === '' && $expectedFunctions !== []) || $cls !== '' && $expectedFunctions === []) {
-            throw new \Exception('set both arguments or leave both blank');
-        }
+		$this->called = [];
 
-        if ($cls !== '') {
-            $helpers->method('registerFunction')
-            ->will($this->returnCallback(function ($a, $b) use ($cls) {
-                $this->assertIsArray($b);
-                $this->assertInstanceOf($cls, $b[0]);
-                $this->called[$a] = $b[1];
-            }));
-        }
+		if (($cls === '' && $expectedFunctions !== []) || $cls !== '' && $expectedFunctions === []) {
+			throw new \Exception('set both arguments or leave both blank');
+		}
 
-        return $helpers;
-    }
+		if ($cls !== '') {
+			$helpers->method('registerFunction')
+			->will($this->returnCallback(function ($a, $b) use ($cls) {
+				$this->assertIsArray($b);
+				$this->assertInstanceOf($cls, $b[0]);
+				$this->called[$a] = $b[1];
+			}));
+		}
 
-    public function assertFunctionsRegistered()
-    {
-        $this->assertEquals($this->expectedFunctions, $this->called);
-    }
+		return $helpers;
+	}
+
+	public function assertFunctionsRegistered()
+	{
+		$this->assertEquals($this->expectedFunctions, $this->called);
+	}
 }
