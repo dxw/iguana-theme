@@ -7,6 +7,8 @@ namespace Dxw\Iguana\Theme;
 //
 class Layout
 {
+	public $templates;
+	public $slug;
 	// Stores the full path to the template file WordPress says we should use
 	public static $wordpress_template;
 

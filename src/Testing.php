@@ -4,6 +4,9 @@ namespace Dxw\Iguana\Theme;
 
 trait Testing
 {
+	public $expectedFunctions;
+	public $called;
+
 	public function getHelpers(/* string */ $cls = '', array $expectedFunctions = [])
 	{
 		$this->expectedFunctions = $expectedFunctions;
