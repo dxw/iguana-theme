@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Bump version of wp_mock
+- Layout::apply() returns a string which is expected by code in WP Core 6.9.2 although removed in 6.9.3
 
 ## [v1.1.0] - 2023-08-14
 ### Added

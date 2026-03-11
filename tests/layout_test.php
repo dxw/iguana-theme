@@ -17,9 +17,13 @@ class Layout_Test extends \PHPUnit\Framework\TestCase
 
 	public function testApply()
 	{
-		$this->assertInstanceOf(
-			\Dxw\Iguana\Theme\Layout::class,
-			\Dxw\Iguana\Theme\Layout::apply('x/y/z.php')
+		\WP_Mock::userFunction('locate_template', [
+			'args' => [[0 => 'layouts/main-z.php', 1 => 'layouts/main.php']],
+			'return' => 'correct output',
+		]);
+
+		$this->assertTrue(
+			is_string(\Dxw\Iguana\Theme\Layout::apply('x/y/z.php'))
 		);
 
 		$this->assertEquals(

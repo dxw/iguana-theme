@@ -42,6 +42,6 @@ class Layout
 			self::$base = false;
 		}
 
-		return new self();
+		return strval(new self());
 	}
 }
