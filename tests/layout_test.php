@@ -42,7 +42,7 @@ class Layout_Test extends \PHPUnit\Framework\TestCase
 		->with(['layouts/main.php'])
 		->reply(['layouts/my-layout.php']);
 
-		\WP_Mock::wpFunction('locate_template', [
+		\WP_Mock::userFunction('locate_template', [
 			'args' => [['layouts/my-layout.php']],
 			'return' => 'correct output',
 		]);
